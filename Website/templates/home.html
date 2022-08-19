@@ -1,2 +1,79 @@
 {% extends "base.html" %} 
-{% block title %} Laxswag {% endblock %} 
+{% block title %} Homepage {% endblock %} 
+{%block content%}
+<h1 align="center" class="text-primary mt-1">Gifts</h1>
+<ul class="list-group list-group-flush" id="gifts">
+    {% for gift in user.gifts %}    
+    <li class="list-group-item padding-top-sm mb-0">
+        {% if gift.price|string() == '' %}
+        {{'Price Not Given'}}, {{gift.title}}
+        {% else %}
+        {{'$' + gift.price|string()}}, {{gift.title}}
+        {% endif %}
+        <button type="button" class="close" onClick="deleteGift({{ gift.id }})">
+            <span aria-hidden="true">&times;</span>
+          </button>
+      <a tabindex="0" class="btn btn-lg btn-outline-primary float-right mr-2 btn-sm" role="button" data-toggle="popover" data-trigger="focus" title="Gift Description" data-content="{{gift.description}}">More Info</a>
+    </li>
+    {% endfor %}
+  </ul>
+<br />
+<script>
+  $(function () {
+  $('[data-toggle="popover"]').popover()
+   })
+</script>
+<form method = 'POST'>
+    <h3 align="center">Add New Gift</h3>
+    <div class="form-row">
+        <div class="col-10"
+        <label for="Gift Title">Gift Title *</label>
+        <input 
+            type="text" 
+            class="form-control" 
+            id="title" 
+            name="title" 
+            placeholder="Stuffed Elephant Plushie"
+            required="true"
+        >
+        </div>
+
+        <div class="col-2">
+            <div class="input-group mt-4">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon1">$</span>
+                </div>
+                <input 
+                type="number" 
+                class="form-control" 
+                id="price" 
+                name="price"
+                min="0"
+                step="0.01" 
+                pattern="^\d+(?:\.\d{1,2})?$"
+                placeholder="17.99"
+            >              
+            </div>              
+        </div>
+              
+
+
+        
+    </div>
+    <div style="height:8px;"></div>
+    <label for="Gift Description">Link to Gift</label>
+    <textarea name="link_to" id="link_to" class="form-control" rows="1" style="height:100%"></textarea>
+    <div style="height:8px;"></div>
+    <label for="Gift Description">Gift Description</label>
+    <textarea name="description" id="description" class="form-control" placeholder="Talk about the gift, such as why you want it, any specifications, or alternatives!"></textarea>
+    <div style="height:12px;"></div>
+    <button type="submit" class="btn btn-primary" style="float: right">Add Gift</button>
+    <!---
+    <textarea name="gift" id="gift" class="form-control">
+    </textarea>
+    <br />
+    <div align="center">
+        <button type="submit" class="btn btn-success">Add Gift</button>
+    </div>-->
+</form>
+{%endblock%}

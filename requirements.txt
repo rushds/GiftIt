@@ -1,0 +1,16 @@
+click==8.1.3
+Flask==2.1.2
+Flask-Login==0.6.1
+Flask-SQLAlchemy==2.5.1
+gunicorn==20.1.0
+haccrypto==0.1.2
+itsdangerous==2.1.2
+Jinja2==3.1.2
+MarkupSafe==2.1.1
+ninfs==2.0a9
+pycryptodomex==3.14.1
+pyctr==0.6.0
+pyperclip==1.8.2
+pypng==0.0.21
+SQLAlchemy==1.4.39
+Werkzeug==2.1.2

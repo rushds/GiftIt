@@ -1,0 +1,42 @@
+{% extends "base.html" %} 
+{% block title %} Share {% endblock %} 
+{%block content%}
+<script>
+    $(document).ready(function(){
+      $('[data-toggle="tooltip"]').tooltip(); 
+    });
+    </script>
+<h1 align="center" class="text-primary mt-1">
+    Share
+</h1>
+<p style="text-align:center"><i>Here, you can create an access phrase that you can give to others! With your email id and access phrase, they can view your gift list.</i></p>
+<div class="container-sm" align="center">
+    {% if user.access_phrase == 'None' %}
+    <p>You currently <b>do not</b> have an access phrase! Create one below to start sharing your gift list!</b></p>
+    {% else %}
+    <p>Your current access phrase is: <b>{{ user.access_phrase }}</b> Feel free to change it below!</p>
+    {% endif %}
+    <form action ="/share" method="POST">
+        <label for="email">Access Phrase</label>
+        <text 
+        data-toggle="tooltip" 
+        data-placement="right" 
+        title="Create an access phrase (unique from your password) that will allow other users to see your guest list. Note that other users will not be able to edit your list.">
+        ⓘ</text>
+        <div class="container" align="right">
+            <div class="form-inline center col-8">
+                <input 
+                type="text" 
+                class="form-control" 
+                id="access_phrase" 
+                name="access_phrase" 
+                >
+                <div style="width:5px"></div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </div>
+    </form>
+    
+</div>
+
+{%endblock%}
