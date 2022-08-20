@@ -1,0 +1,1 @@
+1) Append https:// to front of gift links if the user omits them to properly redirect the user later on.
