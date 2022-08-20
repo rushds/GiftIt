@@ -1,1 +1,3 @@
 1) Append https:// to front of gift links if the user omits them to properly redirect the user later on.
+2) Decide whether to keep list group or card view for gifts and make styling consistent
+3) Background color? Better UI?
